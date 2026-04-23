@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Passeport Professionnel MVP",
   description:
-    "MVP de formation professionnelle : profil d’apprentissage, indicateurs interprétables et recommandations personnalisées.",
+    "MVP de formation professionnelle : profil d’apprentissage, compétences transversales, indicateurs interprétables et recommandations personnalisées.",
 };
 
 export default function RootLayout({
