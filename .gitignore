@@ -1,1 +1,28 @@
-placeholder
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+.env
+venv/
+.env.local
+
+# Node
+node_modules/
+.next/
+out/
+dist/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Misc
+coverage/
