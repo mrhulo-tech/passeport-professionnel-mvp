@@ -3,39 +3,21 @@ import IndicatorList from "./components/IndicatorList";
 import MetricCard from "./components/MetricCard";
 import RecommendationCard from "./components/RecommendationCard";
 import UserSwitch from "./components/UserSwitch";
-import WorkflowExplainer from "./components/WorkflowExplainer";
-import DataBoundaryNote from "./components/DataBoundaryNote";
-import UseCaseBanner from "./components/UseCaseBanner";
-import ProfileNarrative from "./components/ProfileNarrative";
-import IndicatorInterpretationPanel from "./components/IndicatorInterpretationPanel";
-import RecommendationPriority from "./components/RecommendationPriority";
-import MetricLegend from "./components/MetricLegend";
-import DemoChecklist from "./components/DemoChecklist";
-import PartnerReadout from "./components/PartnerReadout";
-import NextStepPanel from "./components/NextStepPanel";
-import TechnicalScopeNote from "./components/TechnicalScopeNote";
-import ArchitectureHint from "./components/ArchitectureHint";
-import DeliveryNote from "./components/DeliveryNote";
-import SprintReadinessCard from "./components/SprintReadinessCard";
-import ProductValueCard from "./components/ProductValueCard";
-import StakeholderPanel from "./components/StakeholderPanel";
-import TimelinePreview from "./components/TimelinePreview";
-import ActionBridge from "./components/ActionBridge";
 
 type DashboardData = {
   user_id: number;
   name: string;
-  level: string;
-  target_role: string;
+  profile_type: string;
+  target_path: string;
   progression_score: number;
-  confidence_score: number;
-  engagement_score: number;
+  readiness_score: number;
+  adaptability_score: number;
   indicators: string[];
   recommendations: string[];
 };
 
 const BACKEND_URL =
-  process.env.BACKEND_URL ?? "https://passeport-cognitif-mvp.onrender.com";
+  process.env.BACKEND_URL ?? "https://passeport-professionnel-mvp.onrender.com";
 
 async function getDashboardData(userId: string): Promise<DashboardData> {
   const response = await fetch(`${BACKEND_URL}/dashboard/${userId}`, {
@@ -62,12 +44,13 @@ export default async function Home({
     <main className="dashboard-page">
       <section className="hero-card">
         <div>
-          <p className="hero-card__eyebrow">Passeport Cognitif MVP</p>
-          <h1>Profil apprenant dynamique</h1>
+          <p className="hero-card__eyebrow">Passeport Professionnel MVP</p>
+          <h1>Profil de préparation professionnelle</h1>
           <p className="hero-card__description">
             Démonstrateur MVP centré sur des données observables, des
-            indicateurs interprétables et des recommandations pédagogiques
-            utiles pour la progression.
+            compétences transversales interprétables et des recommandations
+            personnalisées pour la requalification, l’employabilité et la
+            littératie IA.
           </p>
         </div>
 
@@ -76,9 +59,15 @@ export default async function Home({
         </div>
       </section>
 
-      <UseCaseBanner targetRole={data.target_role} />
-      <WorkflowExplainer userId={userId} />
-      <DataBoundaryNote />
+      <section className="workflow-card">
+        <p className="section-label">Logique du produit</p>
+        <h2>Données → indicateurs → actions recommandées</h2>
+        <p>
+          Ce profil ne mesure pas l’intelligence. Il rend visibles des signaux
+          d’apprentissage et de progression professionnelle à partir de tâches,
+          d’activités et de compétences observables.
+        </p>
+      </section>
 
       <section className="profile-summary-card">
         <div className="profile-summary-card__header">
@@ -86,13 +75,13 @@ export default async function Home({
             <p className="section-label">Profil affiché</p>
             <h2>{data.name}</h2>
           </div>
-          <span className="profile-badge">{data.level}</span>
+          <span className="profile-badge">{data.profile_type}</span>
         </div>
 
         <div className="profile-summary-card__meta">
           <div>
-            <span className="meta-label">Objectif</span>
-            <strong>{data.target_role}</strong>
+            <span className="meta-label">Parcours cible</span>
+            <strong>{data.target_path}</strong>
           </div>
           <div>
             <span className="meta-label">Utilisateur</span>
@@ -101,12 +90,6 @@ export default async function Home({
         </div>
       </section>
 
-      <ProfileNarrative
-        name={data.name}
-        level={data.level}
-        targetRole={data.target_role}
-      />
-
       <section className="metrics-grid">
         <MetricCard
           label="Progression"
@@ -114,21 +97,16 @@ export default async function Home({
           helper="Avancement observable dans le parcours"
         />
         <MetricCard
-          label="Confiance"
-          value={data.confidence_score}
-          helper="Niveau de maîtrise perçu sur les tâches"
+          label="Préparation"
+          value={data.readiness_score}
+          helper="Niveau actuel de préparation à la cible visée"
         />
         <MetricCard
-          label="Engagement"
-          value={data.engagement_score}
-          helper="Régularité et implication dans l’apprentissage"
+          label="Adaptabilité"
+          value={data.adaptability_score}
+          helper="Capacité à évoluer dans un contexte de transformation"
         />
       </section>
-
-      <MetricLegend />
-      <TechnicalScopeNote />
-      <ArchitectureHint />
-      <DeliveryNote />
 
       <section className="content-grid">
         <div className="content-card">
@@ -139,34 +117,19 @@ export default async function Home({
 
         <div className="content-card">
           <p className="section-label">Recommandations</p>
-          <h2>Actions pédagogiques proposées</h2>
+          <h2>Actions proposées</h2>
           <RecommendationCard recommendations={data.recommendations} />
         </div>
       </section>
 
-      <ActionBridge />
-
-      <section className="content-grid">
-        <IndicatorInterpretationPanel indicators={data.indicators} />
-        <RecommendationPriority recommendations={data.recommendations} />
+      <section className="ethics-card">
+        <p>
+          <strong>Cadre d’interprétation :</strong> ce MVP produit un profil
+          d’apprentissage et de préparation professionnelle à partir de données
+          observables. Il ne constitue ni une mesure objective de l’intelligence,
+          ni un score psychométrique.
+        </p>
       </section>
-
-      <section className="content-grid">
-        <TimelinePreview />
-        <ProductValueCard />
-      </section>
-
-      <section className="content-grid">
-        <PartnerReadout />
-        <StakeholderPanel />
-      </section>
-
-      <section className="content-grid">
-        <DemoChecklist />
-        <SprintReadinessCard />
-      </section>
-
-      <NextStepPanel />
     </main>
   );
 }
