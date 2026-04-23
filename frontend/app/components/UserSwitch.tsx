@@ -1,40 +1,22 @@
-
 type UserSwitchProps = {
-  activeUser: string;
+  currentUser: string;
 };
 
-function UserLink({
-  href,
-  active,
-  label,
-}: {
-  href: string;
-  active: boolean;
-  label: string;
-}) {
+export default function UserSwitch({ currentUser }: UserSwitchProps) {
   return (
-    <a
-      href={href}
-      className={`dashboard-user-link${active ? " active" : ""}`}
-    >
-      {label}
-    </a>
-  );
-}
-
-export default function UserSwitch({ activeUser }: UserSwitchProps) {
-  return (
-    <div className="dashboard-switch-grid">
-      <UserLink
+    <div className="user-switch">
+      <a
         href="/?user=1"
-        active={activeUser === "1"}
-        label="Utilisateur 1"
-      />
-      <UserLink
+        className={currentUser === "1" ? "active" : undefined}
+      >
+        Utilisateur 1
+      </a>
+      <a
         href="/?user=2"
-        active={activeUser === "2"}
-        label="Utilisateur 2"
-      />
+        className={currentUser === "2" ? "active" : undefined}
+      >
+        Utilisateur 2
+      </a>
     </div>
   );
 }
