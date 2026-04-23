@@ -1,40 +1,19 @@
-
 type MetricCardProps = {
   label: string;
   value: number;
-  color: string;
+  helper: string;
 };
-
-function ProgressBar({
-  value,
-  color,
-}: {
-  value: number;
-  color: string;
-}) {
-  return (
-    <div className="dashboard-progress">
-      <div
-        className="dashboard-progress-fill"
-        style={{
-          width: `${value}%`,
-          background: color,
-        }}
-      />
-    </div>
-  );
-}
 
 export default function MetricCard({
   label,
   value,
-  color,
+  helper,
 }: MetricCardProps) {
   return (
-    <div className="dashboard-card dashboard-metric-card">
-      <p className="dashboard-metric-label">{label}</p>
-      <h3 className="dashboard-metric-value">{value}%</h3>
-      <ProgressBar value={value} color={color} />
-    </div>
+    <article className="metric-card">
+      <p className="metric-card__label">{label}</p>
+      <p className="metric-card__value">{value}%</p>
+      <p className="metric-card__helper">{helper}</p>
+    </article>
   );
 }
