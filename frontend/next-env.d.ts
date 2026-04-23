@@ -1,1 +1,1 @@
-COPIE ICI LE CONTENU EXACT DU FICHIER frontend/next-env.d.ts DE L’ANCIEN REPO
+placeholder
