@@ -1,22 +1,15 @@
-
 type RecommendationCardProps = {
-  module: string;
-  priority: string;
-  rationale: string;
+  recommendations: string[];
 };
 
 export default function RecommendationCard({
-  module,
-  priority,
-  rationale,
+  recommendations,
 }: RecommendationCardProps) {
   return (
-    <div className="dashboard-recommendation-card">
-      <p className="dashboard-recommendation-title">{module}</p>
-      <p className="dashboard-recommendation-priority">
-        <strong>Priorité :</strong> {priority}
-      </p>
-      <p className="dashboard-recommendation-text">{rationale}</p>
-    </div>
+    <ul className="recommendation-list">
+      {recommendations.map((recommendation) => (
+        <li key={recommendation}>{recommendation}</li>
+      ))}
+    </ul>
   );
 }
