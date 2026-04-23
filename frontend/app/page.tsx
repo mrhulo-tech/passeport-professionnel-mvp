@@ -122,6 +122,29 @@ export default async function Home({
         </div>
       </section>
 
+      <section className="content-grid deployment-grid">
+        <div className="content-card">
+          <p className="section-label">Cas d’usage MVP</p>
+          <h2>Ce que cette première version démontre</h2>
+          <ul className="indicator-list">
+            <li>Requalification face à la transformation numérique</li>
+            <li>Préparation à l’employabilité et aux compétences transversales</li>
+            <li>Littératie IA et adaptation aux nouveaux environnements de travail</li>
+          </ul>
+        </div>
+
+        <div className="content-card">
+          <p className="section-label">Checklist déploiement</p>
+          <h2>Points à valider avant mise en ligne</h2>
+          <ul className="recommendation-list">
+            <li>Le backend répond bien sur /dashboard/1 et /dashboard/2</li>
+            <li>Le frontend affiche des profils différents selon ?user=1 et ?user=2</li>
+            <li>Le wording reste aligné sur les compétences observables</li>
+            <li>Aucun texte ne suggère un score d’intelligence ou une psychométrie</li>
+          </ul>
+        </div>
+      </section>
+
       <section className="ethics-card">
         <p>
           <strong>Cadre d’interprétation :</strong> ce MVP produit un profil
