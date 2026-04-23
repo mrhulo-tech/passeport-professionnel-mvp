@@ -1,28 +1,21 @@
+# Node
+node_modules
+.next
+out
+npm-debug.log*
+
 # Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.sqlite3
-.env
+*.py[cod]
+.venv/
 venv/
+
+# Env
+.env
 .env.local
+.env.*.local
 
-# Node
-node_modules/
-.next/
-out/
-dist/
-
-# Logs
-*.log
-
-# OS
+# OS / editor
 .DS_Store
-
-# IDE
 .vscode/
 .idea/
-
-# Misc
-coverage/
